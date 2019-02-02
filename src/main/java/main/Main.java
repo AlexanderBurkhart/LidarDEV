@@ -25,8 +25,6 @@ public class Main
         mLidarProcessor = new LidarProcessor();
         mLooper.register(mLidarProcessor);
         boolean started = mLidarProcessor.isConnected();
-        if(!started)
-            return;
 
         Pose2d zeroPose = new Pose2d();
         double ts = System.currentTimeMillis() / 1000d;
@@ -37,6 +35,7 @@ public class Main
             try
             {
                 // Lidar Processing occurs in LidarProcessor
+                mLidarProcessor.startNewScan(10000);
                 Thread.sleep(200);
             }
             catch(Exception e)

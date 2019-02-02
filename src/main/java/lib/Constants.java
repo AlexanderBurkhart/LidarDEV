@@ -80,7 +80,7 @@ public class Constants //extends ConstantsBase
     // XXX: This constant is not true for everyone.
     
     // public static final String kLidarPath = "/home/darwin/Programming/Robotics/LIDAR/254-sdk/sdk/output/Linux/Release";
-    public static final String kLidarPath = Paths.get(System.getProperty("user.home"), "chezy_lidar").toString();
+    public static final String kLidarPath = "C:/Users/alexa/Desktop/VSProjects/LidarDEV/src/main/java/lidar/chezy_lidar";
     public static final double kLidarRestartTime = 2.5;
 
     public static final String kLidarLogDir = Paths.get(System.getProperty("user.home"), "/lidarlogs/").toString();

@@ -33,6 +33,7 @@ public class LidarServer
     {
         mLidarProcessor = p;
         String os = System.getProperty("os.name").toLowerCase();
+        Logger.debug(os);
         String dev;
         if(os.indexOf("mac") >= 0)
             dev = "/dev/tty.SLAB_USBtoUART";
@@ -40,7 +41,7 @@ public class LidarServer
         if(os.indexOf("linux") >= 0)
             dev = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";
         else
-            dev = "COM9";  // wouldn't work
+            dev = "USB/VID_10C4&PID_EA60/0001";  // wouldn't work
         mDevFile = new File(dev);
 
         Logger.debug("LIDAR server constructed (" + os + ")");;
@@ -59,25 +60,25 @@ public class LidarServer
 
     public boolean start()
     {
-        if (!isLidarConnected())
-        {
-            Logger.error("Cannot start LidarServer: not connected");
-            return false;
-        }
-        synchronized (this) 
-        {
-            if (mRunning) 
-            {
-                Logger.error("Cannot start LidarServer: already running");
-                return false;
-            }
-            if (mEnding)
-            {
-                Logger.error("Cannot start LidarServer: thread ending");
-                return false;
-            }
-            mRunning = true;
-        }
+        // if (!isLidarConnected())
+        // {
+        //     Logger.error("Cannot start LidarServer: not connected");
+        //     return false;
+        // }
+        // synchronized (this) 
+        // {
+        //     if (mRunning) 
+        //     {
+        //         Logger.error("Cannot start LidarServer: already running");
+        //         return false;
+        //     }
+        //     if (mEnding)
+        //     {
+        //         Logger.error("Cannot start LidarServer: thread ending");
+        //         return false;
+        //     }
+        //     mRunning = true;
+        // }
 
         Logger.notice("LidarServer starting subprocess " + Constants.kLidarPath);
         try
